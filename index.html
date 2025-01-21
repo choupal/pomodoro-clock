@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- ******************************************************* -->
+<!-- </cddev.fr> -->
+<!-- Website - https://cddev.fr -->
+<!-- GitHub - https://github.com/choupal -->
+<!-- Source Code - https://github.com/choupal/pomodoro-clock -->
+<!-- ******************************************************* -->
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>Pomodoro Clock</title>
+  <meta content="Pomodoro Clock" name="description">
+  <link href="assets/images/tomato.webp" rel="icon"/>
+  <meta content="Pomodoro Clock" property="og:title">
+  <meta content="Pomodoro Clock" name="description">
+  <meta content="Pomodoro Clock" property="og:description">
+  <meta
+    content="assets/images/tomato.webp"
+    property="og:image"
+  />
+  <meta content="website" property="og:type"/>
+  <meta content="</cddev.fr>" name="author">
+  <meta content="pomodoro, cddev, cddev.fr, développeur web, développeur, frontend, HTML, CSS, JavaScript" name="keywords">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap"
+    rel="stylesheet"
+  />
+  <script
+    crossorigin="anonymous"
+    src="https://kit.fontawesome.com/f20d8ca545.js"
+  ></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Roboto+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet"
+  />
+  <link href="assets/stylesheet.css" rel="stylesheet"/>
+</head>
+
+<body>
+<div id="main-content">
+  <!-- HEADER -->
+  <header>
+    <img alt="Dessin de tomate avec un chronomètre" id="tomato-icon" src="assets/images/tomato.webp"/>
+    <h1>Pomodoro Clock</h1>
+  </header>
+
+  <!-- TIMER CONTAINER -->
+  <div id="timer-container">
+    <svg
+      id="timer-svg"
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="timer-circle">
+        <circle cx="50" cy="50" id="timer-circle-bg" r="45"></circle>
+        <path
+          class=""
+          d="
+		          					M 50, 50
+		          					m -45, 0
+		          					a 45,45 0 1,0 90,0
+		          					a 45,45 0 1,0 -90,0
+								"
+          id="timer-circle-remaining"
+          stroke-dasharray="283"
+        ></path>
+      </g>
+    </svg>
+    <div id="timer-display-container">
+      <span id="timer-display"></span>
+      <span id="session-display"></span>
+      <span class="grey" id="rounds-display"></span>
+    </div>
+  </div>
+
+  <!-- BUTTONS CONTAINER -->
+  <div id="buttons-container">
+    <i class="fas fa-sliders-h" id="settings-button"></i>
+    <i class="far fa-play-circle green" id="play-button"></i>
+    <i class="fas fa-undo" id="reset-button"></i>
+  </div>
+</div>
+
+<!-- SETTINGS POP-UP -->
+<div id="settings-container">
+  <img alt="Dessin d'un chronomètre" id="timer-icon" src="assets/images/timer.webp"/>
+  <hr class="settings-hr"/>
+  <div class="input-container">
+    <p class="red">Focus</p>
+    <div class="input-controls">
+      <i class="fas fa-minus minus-button"></i>
+      <p id="focus-input"></p>
+      <i class="fas fa-plus add-button"></i>
+    </div>
+  </div>
+  <hr class="settings-hr"/>
+  <div class="input-container">
+    <p class="green">Short Break</p>
+    <div class="input-controls">
+      <i class="fas fa-minus minus-button"></i>
+      <p id="short-input"></p>
+      <i class="fas fa-plus add-button"></i>
+    </div>
+  </div>
+  <hr class="settings-hr"/>
+  <div class="input-container">
+    <p class="blue">Long Break</p>
+    <div class="input-controls">
+      <i class="fas fa-minus minus-button"></i>
+      <p id="long-input"></p>
+      <i class="fas fa-plus add-button"></i>
+    </div>
+  </div>
+  <hr class="settings-hr"/>
+  <div class="input-container">
+    <p class="grey">Rounds</p>
+    <div class="input-controls">
+      <i class="fas fa-minus minus-button"></i>
+      <p id="rounds-input"></p>
+      <i class="fas fa-plus add-button"></i>
+    </div>
+  </div>
+  <hr class="settings-hr"/>
+  <p id="close-settings-button">Close</p>
+</div>
+
+<!-- USER FEEDBACK POP-UP -->
+<div id="message-container">
+  <audio autoplay id="audio" src="/"></audio>
+  <p id="message"></p>
+  <p id="close-message-button">Close</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="https://cddev.fr" id="petiteGriffe" target="_blank">
+    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM199.4 312.6c-31.2-31.2-31.2-81.9 0-113.1s81.9-31.2 113.1 0c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9c-50-50-131-50-181 0s-50 131 0 181s131 50 181 0c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0c-31.2 31.2-81.9 31.2-113.1 0z"/>
+    </svg>
+    &lt/cddev.fr&gt
+  </a>
+</footer>
+
+<!-- SCRIPTS -->
+<script crossorigin="anonymous" integrity="sha512-FwNWaxyfy2XlEINoSnZh1JQ5TRRtGow0D6XcmAWmYCRgvqOUTnzCxPc9uF35u5ZEpirk1uhlPVA19tflhvnW1g==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.13/dayjs.min.js"></script>
+<script crossorigin="anonymous" integrity="sha512-t0b2NyBypSms8nA81pldWo0mXbfMotsdYgvs4awmbi/GU/25YBNLnXj+I9DAMV7WGZ8+z8wtRolX7zSF2LN8UQ==" referrerpolicy="no-referrer"
+        src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.13/plugin/duration.min.js"></script>
+<script>
+  dayjs.extend(window.dayjs_plugin_duration)
+</script>
+<script src="assets/script.js"></script>
+</body>
+</html>
